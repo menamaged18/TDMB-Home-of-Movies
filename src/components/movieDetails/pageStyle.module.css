@@ -1,0 +1,60 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vw;
+    padding: 20px;
+}
+
+/* container that contains image and details */
+.details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; 
+    background-color: #0b0b49;
+    color: white;
+    width: 90%;
+    height: 25vw; 
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #1c1c1c, -10px -10px 20px #2d2121;
+}
+
+.movieImgDetails {
+    height: 22vw;
+    width: 18vw;
+    border-radius: 10px;
+}
+
+/* two classes to make the details takes more than the image for a better shape */
+.imgContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.detailsContainer {
+    flex: 2;
+}
+
+.overview{
+    height: 11vw;   
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 10px;
+    padding: 10px;
+}
+
+.overviewHeader {
+    position: relative;
+    align-self: flex-start;
+    margin: 5px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}

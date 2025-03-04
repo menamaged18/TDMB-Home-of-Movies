@@ -1,0 +1,260 @@
+{
+  "total_pages": 3,
+  "pages": [
+    {
+      "page": 1,
+      "movies": [
+        {
+          "id": 1,
+          "title": "Avengers Endgame",
+          "image": "Avengers Endgame.jpg",
+          "original_language": "en",
+          "release_date": "2019-04-24",
+          "vote_count": 27958,
+          "vote_average": 8.3,
+          "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore order to the universe."
+        },
+        {
+          "id": 2,
+          "title": "Avengers Infinity War",
+          "image": "Avengers Infinity War.jpg",
+          "original_language": "en",
+          "release_date": "2018-04-25",
+          "vote_count": 27289,
+          "vote_average": 8.3,
+          "overview": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A tyrant of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has prepared them for this moment - the fate of Earth and existence itself has never been more uncertain."
+        },
+        {
+          "id": 3,
+          "title": "Bad Boys Ride or Die",
+          "image": "Bad Boys Ride or Die.jpg",
+          "original_language": "en",
+          "release_date": "2024-06-05",
+          "vote_count": 100,
+          "vote_average": 6.8,
+          "overview": "This summer, the world's favorite Bad Boys are back with their iconic mix of edge-of-your seat action and outrageous comedy. But this time, the world's finest are on the run."
+        },
+        {
+          "id": 4,
+          "title": "Bridge to Terabithia",
+          "image": "Bridge to Terabithia.jpg",
+          "original_language": "en",
+          "release_date": "2007-02-16",
+          "vote_count": 3977,
+          "vote_average": 7.4,
+          "overview": "Jess Aarons and Leslie Burke create a fantasy world called Terabithia and spend their free time in the woods, ruling over their imaginary kingdom."
+        },
+        {
+          "id": 5,
+          "title": "Captain America Brave New World",
+          "image": "Captain America Brave New World.jpg",
+          "original_language": "en",
+          "release_date": "2025-02-14",
+          "vote_count": 50,
+          "vote_average": 6.5,
+          "overview": "Plot details are currently unknown."
+        },
+        {
+          "id": 6,
+          "title": "Flight Risk",
+          "image": "Flight Risk.jpg",
+          "original_language": "en",
+          "release_date": "2024-10-25",
+          "vote_count": 20,
+          "vote_average": 6.0,
+          "overview": "A pilot transporting a dangerous prisoner finds himself in a mid-air crisis."
+        },
+        {
+          "id": 7,
+          "title": "Gladiator II",
+          "image": "Gladiator II.jpg",
+          "original_language": "en",
+          "release_date": "2024-11-15",
+          "vote_count": 30,
+          "vote_average": 7.0,
+          "overview": "Sequel to the 2000 film Gladiator. Focuses on Lucius, the son of Lucilla."
+        },
+        {
+          "id": 8,
+          "title": "Iron Man",
+          "image": "Iron Man.jpg",
+          "original_language": "en",
+          "release_date": "2008-04-30",
+          "vote_count": 24209,
+          "vote_average": 7.7,
+          "overview": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "movies": [
+        {
+          "id": 9,
+          "title": "Kraven the Hunter",
+          "image": "Kraven the Hunter.jpg",
+          "original_language": "en",
+          "release_date": "2024-08-29",
+          "vote_count": 40,
+          "vote_average": 6.2,
+          "overview": "Sergei Kravinoff and his alter ego Kraven the Hunter are on a mission to prove that he is the greatest hunter in the world."
+        },
+        {
+          "id": 10,
+          "title": "Moana 2",
+          "image": "Moana 2.jpg",
+          "original_language": "en",
+          "release_date": "2024-11-27",
+          "vote_count": 60,
+          "vote_average": 7.5,
+          "overview": "Moana, Maui, and a brand new crew of unlikely seafarers embark on an epic new journey to the far seas of Oceania and into dangerous, long-lost waters after receiving an unexpected call from their wayfinding ancestors."
+        },
+        {
+          "id": 11,
+          "title": "My Fault London",
+          "image": "My Fault London.jpg",
+          "original_language": "en",
+          "release_date": "2024-12-06",
+          "vote_count": 15,
+          "vote_average": 6.3,
+          "overview": "The story of Noah and Nick continues in London."
+        },
+        {
+          "id": 12,
+          "title": "Paddington in Peru",
+          "image": "Paddington in Peru.jpg",
+          "original_language": "en",
+          "release_date": "2024-11-08",
+          "vote_count": 25,
+          "vote_average": 7.8,
+          "overview": "Paddington and the Brown family embark on an exciting adventure to Peru."
+        },
+        {
+          "id": 13,
+          "title": "Pirates of the Caribbean Dead Mans Chest",
+          "image": "Pirates of the Caribbean Dead Mans Chest.jpg",
+          "original_language": "en",
+          "release_date": "2006-06-28",
+          "vote_count": 14227,
+          "vote_average": 7.4,
+          "overview": "Captain Jack Sparrow works his way out of a blood debt with the ghostly Davy Jones to avoid eternal damnation."
+        },
+        {
+          "id": 14,
+          "title": "Pirates of the Caribbean Dead Men Tell No Tales",
+          "image": "Pirates of the Caribbean Dead Men Tell No Tales.jpg",
+          "original_language": "en",
+          "release_date": "2017-05-23",
+          "vote_count": 10565,
+          "vote_average": 6.5,
+          "overview": "Thrust into an all-new adventure, a down-on-his-luck Captain Jack Sparrow feels the winds of ill-fortune blowing strongly when deadly ghost sailors led by the terrifying Captain Salazar escape from the Devil's Triangle, determined to kill every pirate at sea...including him."
+        },
+        {
+          "id": 15,
+          "title": "Pirates of the Caribbean On Stranger Tides",
+          "image": "Pirates of the Caribbean On Stranger Tides.jpg",
+          "original_language": "en",
+          "release_date": "2011-05-14",
+          "vote_count": 12792,
+          "vote_average": 6.5,
+          "overview": "Captain Jack Sparrow crosses paths with a woman from his past, and he's not sure if it's love—or if she's a ruthless con artist who's using him to find the fabled Fountain of Youth. When she forces him aboard the Queen Anne's Revenge, the ship of the formidable pirate Blackbeard, Jack finds himself on an unexpected adventure in which he doesn't know whom to fear more: Blackbeard or the woman from his past."
+        },
+        {
+          "id": 16,
+          "title": "Spider Man No Way Home",
+          "image": "Spider Man No Way Home.jpg",
+          "original_language": "en",
+          "release_date": "2021-12-15",
+          "vote_count": 18274,
+          "vote_average": 8.0,
+          "overview": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes life of a Super Hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "movies": [
+        {
+          "id": 17,
+          "title": "Spider-Man",
+          "image": "Spider-Man.jpg",
+          "original_language": "en",
+          "release_date": "2002-05-03",
+          "vote_count": 15000,
+          "vote_average": 7.3,
+          "overview": "Peter Parker gains superhuman abilities after being bitten by a genetically altered spider. He uses his newfound powers to fight crime in New York City."
+        },
+        {
+          "id": 18,
+          "title": "The Avengers",
+          "image": "The Avengers.jpg",
+          "original_language": "en",
+          "release_date": "2012-05-04",
+          "vote_count": 25000,
+          "vote_average": 8.0,
+          "overview": "Earth's mightiest heroes must come together and learn to fight as a team to stop the mischievous Loki and his alien army from enslaving humanity."
+        },
+        {
+          "id": 19,
+          "title": "The Lord of the Rings The Fellowship of the Ring",
+          "image": "The Lord of the Rings The Fellowship of the Ring.jpg",
+          "original_language": "en",
+          "release_date": "2001-12-19",
+          "vote_count": 20000,
+          "vote_average": 8.8,
+          "overview": "A young hobbit, Frodo, inherits a powerful ring that must be destroyed to prevent the dark lord Sauron from conquering Middle-earth. He forms a fellowship to embark on this perilous journey."
+        },
+        {
+          "id": 20,
+          "title": "Venom The Last Dance",
+          "image": "Venom The Last Dance.jpg",
+          "original_language": "en",
+          "release_date": "2024-10-25",
+          "vote_count": 10,
+          "vote_average": 6.7,
+          "overview": "The final chapter in the Venom saga, where Eddie Brock and Venom face their greatest challenge yet."
+        },
+        {
+          "id": 21,
+          "title": "Shrek",
+          "image": "Shrek.jpg",
+          "original_language": "en",
+          "release_date": "2001-05-18",
+          "vote_count": 15000,
+          "vote_average": 7.8,
+          "overview": "A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest to rescue a princess for the lord in order to get his land back."
+        },
+        {
+          "id": 22,
+          "title": "Kingdom of the Planet of the Apes",
+          "image": "Kingdom of the Planet of the Apes.jpg",
+          "original_language": "en",
+          "release_date": "2024-05-10",
+          "vote_count": 200,
+          "vote_average": 7.2,
+          "overview": "In the wake of Caesar's death, a new ape society rises, but a human girl with a mysterious connection to the apes threatens to disrupt their fragile peace."
+        },
+        {
+          "id": 23,
+          "title": "The Dark Knight",
+          "image": "The Dark Knight.jpg",
+          "original_language": "en",
+          "release_date": "2008-07-18",
+          "vote_count": 30000,
+          "vote_average": 9.0,
+          "overview": "When the menace known as the Joker emerges from the shadows, Batman must confront chaos and anarchy in Gotham City, testing his limits as a hero."
+        },
+        {
+          "id": 24,
+          "title": "Interstellar",
+          "image": "Interstellar.jpg",
+          "original_language": "en",
+          "release_date": "2014-11-07",
+          "vote_count": 25000,
+          "vote_average": 8.6,
+          "overview": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival as Earth faces a global food crisis."
+        }
+      ]
+    }
+  ]
+}

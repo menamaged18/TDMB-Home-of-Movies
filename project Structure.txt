@@ -1,0 +1,17 @@
+my structure is the following:
+app
+- movies
+-- [moviesId]
+--- page.tsx
+- pages
+-- displayMD.tsx
+- layout.tsx
+- page.tsx
+components
+- movieCard.tsx
+- MyPagination.tsx
+reduxStore
+- reducers
+-- movieSlice.tsx
+- rStore
+-- store.js

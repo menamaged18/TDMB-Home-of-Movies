@@ -1,0 +1,41 @@
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Brand name styling */
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Right-aligned container for search and favourites */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adds space between search and favourites */
+}
+
+/* Search input styling */
+.navbar-search input {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Favourites link styling */
+.navbar-favourites a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar-favourites a:hover {
+    text-decoration: underline;
+}

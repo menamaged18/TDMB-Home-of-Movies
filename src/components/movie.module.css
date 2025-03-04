@@ -1,0 +1,51 @@
+.movieContainer {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%; 
+    max-width: 400px; 
+}
+
+.Movieimage {
+    width: 100%;
+    min-width: 300px; 
+    height: auto;
+    transition: filter 0.3s ease;
+}
+
+.Movieimage:hover {
+    filter: brightness(0.3);
+}
+
+.movieDetails {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 10px;
+    word-wrap: break-word; /* Ensures long text wraps */
+    white-space: normal; /* Allows text to wrap naturally */
+}
+
+.movieContainer:hover .movieDetails {
+    opacity: 1;
+}
+
+.para {
+    margin-top: 30px;
+    margin-bottom: 1rem;
+}
