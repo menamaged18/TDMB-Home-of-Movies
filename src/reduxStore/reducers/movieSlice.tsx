@@ -28,7 +28,7 @@ const initialState: {
   error: null,
 };
 
-const apiKey = 'f0d249747fa59a853b036b225cb71baa1';
+const apiKey = 'f0d249747fa59a853b036b225cb71ba1';
 
 // Create an async thunk to fetch data from the API
 export const fetchMData = createAsyncThunk('data/fetchData', async () => {
@@ -40,7 +40,7 @@ export const fetchMData = createAsyncThunk('data/fetchData', async () => {
 });
 
 export const fetchMoviesPage = createAsyncThunk<
-  { results: any[]; pages: number }, // Return type
+  { results: Movie[]; pages: number }, 
   number // Argument type (pageNum should be a number)
 >('data/fetchMoviesPage', async (pageNum: number) => {
     const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${pageNum}`);
@@ -51,15 +51,15 @@ export const fetchMoviesPage = createAsyncThunk<
 });
 
 export const fetchMovieById = createAsyncThunk<
-  any, // Return type (can be more specific based on API response)
-  number // Argument type (movieId should be a number)
+Movie, 
+  number 
 >('data/fetchMovieById', async (movieId: number) => {
     const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
     return response.data;
 });
 
 export const movieSearch = createAsyncThunk<
-  { results: any[]; pages: number }, // Return type
+  { results: Movie[]; pages: number }, 
   string // Argument type (word should be a string)
 >('data/movieSearch', async (word: string) => {
     const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${word}`);

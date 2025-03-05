@@ -23,7 +23,7 @@ export default function Home() {
     if (!isSearching) {
       typedDispatch(fetchMData());
     }
-  }, [isSearching]);
+  }, [typedDispatch, isSearching]);
 
   const getPage = (page: number) =>{
     setSelectedPage(page - 1);
@@ -53,7 +53,7 @@ export default function Home() {
         }        
       }
     },
-    [dispatch]
+    [typedDispatch, dispatch]
   );
 
   // Handle search with debounce
@@ -77,7 +77,7 @@ export default function Home() {
     if (status === 'failed') {
       loadingErrorRef.current = true;
     }
-  }, [status]); //must Runs only when `status` changes
+  }, [status, dispatch]); //must Runs only when `status` changes
 
   // when the status becames true the loadingErrorRef must return to false meaning there is no error in the state
   useEffect(() => {
