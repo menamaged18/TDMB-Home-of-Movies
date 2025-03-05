@@ -1,5 +1,6 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState, useCallback, useRef, ChangeEvent  } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector, useTypedDispatch  } from '@/reduxStore/rStore/store'; 
 import { fetchMData, movieSearch, fetchMoviesPage } from '../../reduxStore/reducers/movieSlice';
 import { getMoviesPage, searchForMovie } from '@/reduxStore/reducers/staticMovies';
 import MovieCard from '@/components/MovieCard';
@@ -9,8 +10,9 @@ import SMS from './staticMoviesStyle.module.css'
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { data, status, page_count, error } = useSelector((state) => state.MoviesData);
-  const { movies, totalPages } = useSelector((state) => state.StaticMovies);
+  const typedDispatch = useTypedDispatch();
+  const { data, status, page_count, error } = useTypedSelector((state) => state.MoviesData);
+  const { staticData, totalPages } = useTypedSelector((state) => state.StaticMovies);
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const loadingErrorRef = useRef(false); // if there was an error this will be true and then load the static movies
@@ -19,22 +21,22 @@ export default function Home() {
   // Initial data fetch
   useEffect(() => {
     if (!isSearching) {
-      dispatch(fetchMData());
+      typedDispatch(fetchMData());
     }
   }, [isSearching]);
 
-  const getPage = (page) =>{
+  const getPage = (page: number) =>{
     setSelectedPage(page - 1);
     if (loadingErrorRef.current) {
       dispatch(getMoviesPage(page))
     }else{
-      dispatch(fetchMoviesPage(page))
+      typedDispatch(fetchMoviesPage(page))
     }
   };
 
   // Debounced search function
   const debouncedSearch = useCallback(
-    (value) => {
+    (value:string) => {
       // checking if the displayed movies is the static movies or the movies that comes from the api
       if (loadingErrorRef.current) { // search for the movies that are in the static list
         if (value.trim() === "") {
@@ -47,7 +49,7 @@ export default function Home() {
           setIsSearching(false);
         } else {
           setIsSearching(true);
-          dispatch(movieSearch(value));
+          typedDispatch(movieSearch(value));
         }        
       }
     },
@@ -64,7 +66,7 @@ export default function Home() {
   }, [searchValue, debouncedSearch]);
 
   // Handle input change
-  const handleSearch = (e) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setSearchValue(newValue);
   };
@@ -112,16 +114,16 @@ export default function Home() {
           <div className={SMS.containerStyle}>
             <h1>Displaying Static Movies list in case of errors or api key finished</h1>
             <ul style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent:'center', gap: '10px', padding:'50px' }}>
-                {
-                    movies?.movies?.length > 0 &&
-                    movies.movies.map((movie) => {
-                        return (
-                          <li key={movie.id} style={{ width: '22vw', boxSizing: 'border-box', listStyle: 'none' }}>
-                            <MovieCard key={movie.id} movie={movie} StaticOrAPI="static" />
-                          </li>    
-                        );
-                    })
-                }
+            {
+                staticData?.length > 0 &&
+                staticData.map((movie) => {
+                    return (
+                      <li key={movie.id} style={{ width: '22vw', boxSizing: 'border-box', listStyle: 'none' }}>
+                        <MovieCard key={movie.id} movie={movie} StaticOrAPI="static" />
+                      </li>    
+                    );
+                })
+            }
             </ul>
             <MyPagination page={getPage} currentPage={selectedPage} totalPages={totalPages} />
           </div>

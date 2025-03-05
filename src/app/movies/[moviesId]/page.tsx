@@ -1,7 +1,7 @@
 import MovieDetails from "@/components/movieDetails/MovieDetails"; // Import the Client Component
 import { use } from "react";
 
-// Fetch movie data (if needed) and define metadata
+// Fetch movie data and define metadata
 export async function generateMetadata() {
     return {
         title: "Movie Details",

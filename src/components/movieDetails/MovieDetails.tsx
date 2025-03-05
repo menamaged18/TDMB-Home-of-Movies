@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useTypedSelector, useTypedDispatch  } from '@/reduxStore/rStore/store'; 
 import { fetchMovieById } from "@/reduxStore/reducers/movieSlice";
 import pageStyle from './pageStyle.module.css'
 import Link from "next/link";
@@ -12,14 +12,15 @@ interface MovieDetailsProps {
 }
 
 export default function MovieDetails({moviesId}: MovieDetailsProps ) {
-    const dispatch = useDispatch();
+    const dispatch = useTypedDispatch();
 
     useEffect(() => {
-        dispatch(fetchMovieById(moviesId)); 
+        const mvid = parseInt(moviesId);
+        dispatch(fetchMovieById(mvid)); 
     }, [dispatch, moviesId]);
 
-    const movie = useSelector((state) => state.MoviesData.selectedMovie);
-    const status = useSelector((state) => state.MoviesData.status);
+    const movie = useTypedSelector((state) => state.MoviesData.selectedMovie);
+    const status = useTypedSelector((state) => state.MoviesData.status);
 
     if (status === "loading") return <div>Loading...</div>;
     if (!movie) return <div className={pageStyle.Container}>No movie found or can not display the moive right now </div>;

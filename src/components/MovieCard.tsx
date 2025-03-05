@@ -1,7 +1,24 @@
 import movieStyle from './movie.module.css'
 import Link from 'next/link';
 
-function MovieCard({movie, StaticOrAPI}) {
+interface Movie {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path?: string;
+  release_date?: string;
+  image?: string;
+  original_language?: string,
+  vote_count?: number,
+  vote_average?: number,
+}
+
+interface MCProps {
+  movie: Movie,
+  StaticOrAPI: string
+}
+
+function MovieCard({movie, StaticOrAPI}: MCProps) {
   let imageUrl = "";
   if(StaticOrAPI === 'static'){
     imageUrl = `/static-movies/${movie.image}`;

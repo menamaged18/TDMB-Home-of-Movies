@@ -26,8 +26,14 @@
 // another library will do the same but with more advanced and dynamic tools called react-paginate
 import ReactPaginate from 'react-paginate'
 
-function MyPagination({page, currentPage, totalPages }) {
-    const handlePageClick = (p) => {
+interface MyPagProps {
+  page: (pageNumber: number) => void, // function
+  currentPage: number,
+  totalPages: number,
+}
+
+function MyPagination({page, currentPage, totalPages }: MyPagProps) {
+    const handlePageClick = (p: { selected: number }) => {
         const pageNumber = p.selected + 1;
         page(pageNumber);
     }
