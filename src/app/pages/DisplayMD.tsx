@@ -6,6 +6,7 @@ import { getMoviesPage, searchForMovie } from '@/reduxStore/reducers/staticMovie
 import MovieCard from '@/components/MovieCard';
 import MyPagination from '@/components/MyPagination';
 import SMS from './staticMoviesStyle.module.css'
+import DyM from './DyMovies.module.css'
 
 
 export default function Home() {
@@ -132,10 +133,10 @@ export default function Home() {
       
       {status === 'succeeded' && (
         <> 
-            <ul style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent:'center', gap: '10px', padding:'50px' }}>
+            <ul className={DyM.DyMoviesContainer}>
             {data && data.length > 0 ? (
                 data.map(_movie => (
-                <li key={_movie.id} style={{ width: '22vw', boxSizing: 'border-box', listStyle: 'none' }}>
+                <li key={_movie.id} className={DyM.element}>
                     <MovieCard movie={_movie} StaticOrAPI='API'/>
                 </li>
                 ))
