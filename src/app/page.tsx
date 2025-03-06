@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className={styles.page}>
-        <main className={styles.main}>
+      <div>
+        <main>
         <Provider store={store}>
           <DisplayMD />
         </Provider>
