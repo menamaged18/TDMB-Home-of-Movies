@@ -5,6 +5,8 @@
     align-items: center;
     gap: 1.5vw;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* container that contains image and details */
@@ -16,15 +18,20 @@
     background-color: #0b0b49;
     color: white;
     width: 90%;
-    height: 25vw; 
+    height: auto;
+    min-height: 12vw;
     border-radius: 10px;
     box-shadow: 10px 10px 20px #1c1c1c, -10px -10px 20px #2d2121;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .movieImgDetails {
     height: 22vw;
     width: 18vw;
     border-radius: 10px;
+    object-fit: cover; 
+    max-height: 400px; 
 }
 
 /* two classes to make the details takes more than the image for a better shape */
@@ -36,10 +43,14 @@
 
 .detailsContainer {
     flex: 2;
+    display: flex;
+    flex-direction: column;
 }
 
-.overview{
-    height: 11vw;   
+.overview {
+    height: auto; /* Changed from fixed height to auto */
+    max-height: 11vw;
+    overflow-y: auto; /* Add scrolling for overflow text */
     font-size: large;
     display: flex;
     flex-direction: column;
@@ -57,4 +68,79 @@
 .buttons {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 992px) {
+    .details {
+        width: 95%;
+    }
+    
+    .movieImgDetails {
+        height: 25vw;
+        width: 20vw;
+    }
+    
+    .overview {
+        font-size: medium;
+        max-height: 15vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .details {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    
+    .imgContainer, .detailsContainer {
+        flex: none;
+        width: 100%;
+    }
+    
+    .movieImgDetails {
+        height: auto;
+        width: 50%;
+        max-width: 300px;
+        margin: 10px 0;
+    }
+    
+    .overview {
+        max-height: none;
+        height: auto;
+    }
+    
+    .buttons {
+        justify-content: center;
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .Container {
+        padding: 10px;
+    }
+    
+    .details {
+        width: 100%;
+        padding: 10px;
+        box-shadow: 5px 5px 10px #1c1c1c, -5px -5px 10px #2d2121;
+    }
+    
+    .movieImgDetails {
+        width: 70%;
+    }
+    
+    .overview {
+        font-size: small;
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    .buttons button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
 }

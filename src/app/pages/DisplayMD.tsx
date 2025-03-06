@@ -4,7 +4,7 @@ import { useTypedSelector, useTypedDispatch  } from '@/reduxStore/rStore/store';
 import { fetchMData, movieSearch, fetchMoviesPage } from '../../reduxStore/reducers/movieSlice';
 import { getMoviesPage, searchForMovie } from '@/reduxStore/reducers/staticMovies';
 import MovieCard from '@/components/MovieCard';
-import MyPagination from '@/components/MyPagination';
+import MyPagination from '@/components/pagination/MyPagination';
 import SMS from './staticMoviesStyle.module.css'
 import DyM from './DyMovies.module.css'
 
