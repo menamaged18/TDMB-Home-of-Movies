@@ -94,15 +94,15 @@ export default function Home() {
 
   return (
     <>
-      <nav style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
+      <div className={DyM.searchContainer}>
         <input
           type="search"
           value={searchValue}
           onChange={handleSearch}
           placeholder="Search for movies..."
-          style={{ padding: '8px', width: '300px' }}
+          className={DyM.searchInput}
         />
-      </nav>
+      </div>
       
       {status === 'loading' && <div>Loading...</div>}
       
