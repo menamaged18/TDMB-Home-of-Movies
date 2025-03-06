@@ -1,5 +1,4 @@
 'use client';
-import styles from "./page.module.css";
 import { Provider } from 'react-redux';
 import { store } from '../reduxStore/rStore/store';
 import DisplayMD from "@/app/pages/DisplayMD";
@@ -17,6 +16,5 @@ export default function Home() {
         </main>
       </div>    
     </>
-
   );
 }
