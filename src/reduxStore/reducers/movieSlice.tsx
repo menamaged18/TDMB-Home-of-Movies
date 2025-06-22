@@ -28,7 +28,7 @@ const initialState: {
   error: null,
 };
 
-const apiKey = 'f0d249747fa59a853b036b225cb71ba1';
+const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 // Create an async thunk to fetch data from the API
 export const fetchMData = createAsyncThunk('data/fetchData', async () => {
