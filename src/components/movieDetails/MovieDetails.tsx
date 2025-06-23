@@ -1,69 +1,64 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTypedSelector, useTypedDispatch  } from '@/reduxStore/rStore/store'; 
 import { fetchMovieById } from "@/reduxStore/reducers/movieSlice";
-import { getFavorites } from "@/reduxStore/reducers/favMovies";
+import { getMovieById } from "@/reduxStore/reducers/staticMovies";
+import { getFavorites, addMovieToFavorites, removeFromFavorites } from "@/reduxStore/reducers/favMovies";
 import pageStyle from './pageStyle.module.css'
 import Link from "next/link";
 import Header from "../headerComponent/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons'; // Alias for regular star
 import { faStar as faSolidStar } from '@fortawesome/free-solid-svg-icons';
+import { Movie } from "@/interfaces/interfaces";
 
 interface MovieDetailsProps {
     moviesId: string;
+    StaticOrAPI: string
 }
 
-export default function MovieDetails({moviesId}: MovieDetailsProps ) {
+export default function MovieDetails({moviesId, StaticOrAPI}: MovieDetailsProps ) {
     const mvid = parseInt(moviesId);
     const dispatch = useTypedDispatch();
+    // const typedDispatch = useTypedDispatch();
+    const { apiKeyWorks } = useTypedSelector((state) => state.MoviesData);
+    // console.log(`api key status: ${apiKeyWorks}`);
     const [isFavM, setIsFavM] = useState(false);
 
-    const addMovieToFavorites = (movieId: number) => {
-        try {
-            // 1. Get existing movies 
-            const moviesList = getFavorites();
-
-            // 2. Check if movieId is already in the list 
-            if (!moviesList.includes(movieId)) {
-            // 3. Add the new movieId
-            const updatedMovies = [...moviesList, movieId];
-            
-            // 4. Save back to sessionStorage
-            sessionStorage.setItem('FavMovies', JSON.stringify(updatedMovies));
-            console.log('Added to favorites:', movieId);
-            } else {
-            console.log('Movie already in favorites');
-            }
-        } catch (error) {
-            console.error('Error updating favorites:', error);
-        }
-    };
-
-    // Remove movie from favorites
-    const removeFromFavorites = (id: number) => {
-        const favMovies = getFavorites();
-        const updated = favMovies.filter(movieId => movieId !== id);
-        sessionStorage.setItem('FavMovies', JSON.stringify(updated));
-    };
-
     useEffect(() => {
-        dispatch(fetchMovieById(mvid));
+        if (apiKeyWorks) {
+            dispatch(fetchMovieById(mvid));
+        } else{
+            dispatch(getMovieById(mvid));
+        }
         // to see if the movie is on the fav list or not
         const favMovies = getFavorites();
         setIsFavM(favMovies.includes(mvid)); 
     }, [dispatch, moviesId]);
 
-    const movie = useTypedSelector((state) => state.MoviesData.selectedMovie);
-    const status = useTypedSelector((state) => state.MoviesData.status);
+    let movie: Movie | null = null;
+    let status = null;
+    if (apiKeyWorks) {
+        movie = useTypedSelector((state) => state.MoviesData.selectedMovie);
+        status = useTypedSelector((state) => state.MoviesData.status);
+    } else{
+        movie = useTypedSelector((state) => state.StaticMovies.selectedMovie);
+        status = useTypedSelector((state) => state.StaticMovies.status);
+    } 
 
     if (status === "loading") return <div>Loading...</div>;
     if (!movie) return <div className={pageStyle.Container}>No movie found or can not display the moive right now </div>;
 
-    const baseUrl = "https://image.tmdb.org/t/p/";
-    const imageSize = "w500"; // Choosing the size {original or w500, w300 or any valid number}
-    const imageUrl = `${baseUrl}${imageSize}${movie.poster_path}`;
+    let imageUrl = "";
+    
+    if(StaticOrAPI === 'static'){
+        imageUrl = `/static-movies/${movie.image}`;
+    } else{
+        const baseUrl = "https://image.tmdb.org/t/p/";
+        const imageSize = "w300"; // Choose the size {original or w500, w300 or any valid number}
+        imageUrl = `${baseUrl}${imageSize}${movie.poster_path}`;  
+    }
 
     const handleFavM = () => {
         if (isFavM) {
@@ -74,8 +69,6 @@ export default function MovieDetails({moviesId}: MovieDetailsProps ) {
             addMovieToFavorites(mvid);
         }
     };
-
-    // console.log(movie)
 
     return (
         <>
@@ -88,7 +81,7 @@ export default function MovieDetails({moviesId}: MovieDetailsProps ) {
                     </div>
                     <div className={pageStyle.detailsContainer}>
                         <h1>Title: {movie.title}</h1>
-                        <p>Language: {movie.original_language}</p>
+                        <p>Language: {movie.original_language ? (movie.original_language) : ("EN") }</p>
                         <p>Release Date: {movie.release_date}</p>
                         <p>Vote Count: {movie.vote_count}</p>
                         <p>Vote Average: {movie.vote_average}</p>                                

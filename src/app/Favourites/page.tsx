@@ -38,12 +38,15 @@ function Page() {
       <div className={SMS.containerStyle}>
         <ul style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent:'center', gap: '10px', padding:'50px' }}>
           {
-            data?.length > 0 &&
+            data?.length > 0 ?(
             data.map((movie) => (
               <li key={movie.id} style={{ width: '22vw', boxSizing: 'border-box', listStyle: 'none' }}>
                 <MovieCard key={movie.id} movie={movie} StaticOrAPI="API" />
               </li>    
             ))
+            ) : (
+              <div>there is no favourite movies</div>
+            ) 
           }
         </ul>
       </div>

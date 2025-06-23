@@ -1,4 +1,4 @@
-import MovieDetails from "@/components/movieDetails/MovieDetails"; // Import the Client Component
+import MovieDetails from "@/components/movieDetails/MovieDetails"; 
 import { use } from "react";
 
 // Fetch movie data and define metadata
@@ -8,7 +8,12 @@ export async function generateMetadata() {
     };
 }
 
-export default function Page({ params }: { params: Promise<{ moviesId: string }> }) {
+export default function Page({ params, searchParams }: { 
+  params: Promise<{ moviesId: string }>, 
+  searchParams: Promise<{ StaticOrAPI: string }>
+}) {
     const { moviesId } = use(params);
-    return <MovieDetails moviesId={moviesId} />;
+    const { StaticOrAPI } = use(searchParams);
+
+    return <MovieDetails moviesId={moviesId} StaticOrAPI={StaticOrAPI} />;
 }

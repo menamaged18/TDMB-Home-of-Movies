@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef, ChangeEvent  } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector, useTypedDispatch  } from '@/reduxStore/rStore/store'; 
-import { fetchMData, movieSearch, fetchMoviesPage } from '../../reduxStore/reducers/movieSlice';
+import { fetchMData, movieSearch, fetchMoviesPage, changeApiStatus } from '../../reduxStore/reducers/movieSlice';
 import { getMoviesPage, searchForMovie } from '@/reduxStore/reducers/staticMovies';
 import MovieCard from '@/components/MovieCard';
 import MyPagination from '@/components/pagination/MyPagination';
@@ -12,7 +12,7 @@ import DyM from './DyMovies.module.css';
 export default function Home() {
   const dispatch = useDispatch();
   const typedDispatch = useTypedDispatch();
-  const { data, status, page_count, error } = useTypedSelector((state) => state.MoviesData);
+  const { data, status, page_count, error, apiKeyWorks} = useTypedSelector((state) => state.MoviesData);
   const { staticData, totalPages } = useTypedSelector((state) => state.StaticMovies);
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -77,6 +77,8 @@ export default function Home() {
   useEffect(() => {
     if (status === 'failed') {
       loadingErrorRef.current = true;
+      // change the api status in redux because i will need that in other components
+      dispatch(changeApiStatus());
     }
   }, [status, dispatch]); //must Runs only when `status` changes
 

@@ -8,15 +8,18 @@ const initialState: {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   page_count: number;
   error: string | null;
+  apiKeyWorks: boolean;
 } = {
   data: [], // This is now explicitly an array of any
   selectedMovie: null,
   status: 'idle',
   page_count: 0,
   error: null,
+  apiKeyWorks: true,
 };
 
-const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+// const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const apiKey = 123;
 
 // Create an async thunk to fetch data from the API
 export const fetchMData = createAsyncThunk('data/fetchData', async () => {
@@ -67,6 +70,11 @@ const dataSlice = createSlice({
       resetMovies: (state) => {
         state.data = []; // Clears the movie list when needed
       },
+      changeApiStatus: (state) => {
+        // state.apiKeyWorks = state.apiKeyWorks? (false) : (true);
+        // more pro code:
+        state.apiKeyWorks = !state.apiKeyWorks;
+      }
     },
     extraReducers: (builder) => {
       builder
@@ -113,5 +121,5 @@ const dataSlice = createSlice({
     },
 });
   
-export const { resetMovies} = dataSlice.actions;
+export const { resetMovies, changeApiStatus } = dataSlice.actions;
 export default dataSlice.reducer;

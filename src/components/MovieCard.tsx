@@ -20,16 +20,21 @@ interface MCProps {
 
 function MovieCard({movie, StaticOrAPI}: MCProps) {
   let imageUrl = "";
+
   if(StaticOrAPI === 'static'){
     imageUrl = `/static-movies/${movie.image}`;
-  }else{
+    // console.log(StaticOrAPI);  
+  } else{
     const baseUrl = "https://image.tmdb.org/t/p/";
     const imageSize = "w300"; // Choose the size {original or w500, w300 or any valid number}
-    imageUrl = `${baseUrl}${imageSize}${movie.poster_path}`;    
+    imageUrl = `${baseUrl}${imageSize}${movie.poster_path}`;  
   }
-
+  
   return (
-    <Link href={`/movies/${movie.id}`}>
+    <Link href={{
+      pathname: `/movies/${movie.id}`,
+      query: { StaticOrAPI: StaticOrAPI }
+    }}>
       <div className={movieStyle.movieContainer}> 
         <img
             src={imageUrl}

@@ -9,4 +9,5 @@ export interface Movie {
   vote_count?: number,
   vote_average?: number,
   homepage?: string,
+  image?: string;
 }
