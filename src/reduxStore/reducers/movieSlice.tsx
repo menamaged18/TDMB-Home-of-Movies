@@ -1,18 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-// create movie object
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path?: string;
-  release_date?: string;
-  original_language?: string,
-  vote_count?: number,
-  vote_average?: number,
-  homepage?: string,
-}
+import {Movie} from '@/interfaces/interfaces';
 
 const initialState: {
   data: Movie[];

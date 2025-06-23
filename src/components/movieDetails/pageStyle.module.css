@@ -48,8 +48,6 @@
 }
 
 .overview {
-    height: auto; /* Changed from fixed height to auto */
-    max-height: 11vw;
     overflow-y: auto; /* Add scrolling for overflow text */
     font-size: large;
     display: flex;

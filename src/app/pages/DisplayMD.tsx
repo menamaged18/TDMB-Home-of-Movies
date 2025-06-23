@@ -5,8 +5,8 @@ import { fetchMData, movieSearch, fetchMoviesPage } from '../../reduxStore/reduc
 import { getMoviesPage, searchForMovie } from '@/reduxStore/reducers/staticMovies';
 import MovieCard from '@/components/MovieCard';
 import MyPagination from '@/components/pagination/MyPagination';
-import SMS from './staticMoviesStyle.module.css'
-import DyM from './DyMovies.module.css'
+import SMS from './staticMoviesStyle.module.css';
+import DyM from './DyMovies.module.css';
 
 
 export default function Home() {
