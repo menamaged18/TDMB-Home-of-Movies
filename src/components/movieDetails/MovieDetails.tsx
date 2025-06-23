@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTypedSelector, useTypedDispatch  } from '@/reduxStore/rStore/store'; 
 import { fetchMovieById } from "@/reduxStore/reducers/movieSlice";
 import { getMovieById } from "@/reduxStore/reducers/staticMovies";
@@ -37,15 +37,14 @@ export default function MovieDetails({moviesId, StaticOrAPI}: MovieDetailsProps 
         setIsFavM(favMovies.includes(mvid)); 
     }, [dispatch, moviesId]);
 
-    let movie: Movie | null = null;
-    let status = null;
-    if (apiKeyWorks) {
-        movie = useTypedSelector((state) => state.MoviesData.selectedMovie);
-        status = useTypedSelector((state) => state.MoviesData.status);
-    } else{
-        movie = useTypedSelector((state) => state.StaticMovies.selectedMovie);
-        status = useTypedSelector((state) => state.StaticMovies.status);
-    } 
+    const selectedMovieFromAPI = useTypedSelector((state) => state.MoviesData.selectedMovie);
+    const selectedMovieFromStatic = useTypedSelector((state) => state.StaticMovies.selectedMovie);
+    const statusFromAPI = useTypedSelector((state) => state.MoviesData.status);
+    const statusFromStatic = useTypedSelector((state) => state.StaticMovies.status);
+
+    const movie:Movie|null = apiKeyWorks ? selectedMovieFromAPI : selectedMovieFromStatic;
+    const status = apiKeyWorks ? statusFromAPI : statusFromStatic;
+
 
     if (status === "loading") return <div>Loading...</div>;
     if (!movie) return <div className={pageStyle.Container}>No movie found or can not display the moive right now </div>;

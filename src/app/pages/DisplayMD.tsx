@@ -12,7 +12,7 @@ import DyM from './DyMovies.module.css';
 export default function Home() {
   const dispatch = useDispatch();
   const typedDispatch = useTypedDispatch();
-  const { data, status, page_count, error, apiKeyWorks} = useTypedSelector((state) => state.MoviesData);
+  const { data, status, page_count, error} = useTypedSelector((state) => state.MoviesData);
   const { staticData, totalPages } = useTypedSelector((state) => state.StaticMovies);
   const [searchValue, setSearchValue] = useState("");
   const [isSearching, setIsSearching] = useState(false);
