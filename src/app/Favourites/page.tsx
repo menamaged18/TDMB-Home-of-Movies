@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import MovieCard from '@/components/MovieCard';
-import { useTypedDispatch  } from '@/reduxStore/rStore/store'; 
+import { useTypedDispatch, useTypedSelector  } from '@/reduxStore/rStore/store'; 
 import { fetchMovieById } from '../../reduxStore/reducers/movieSlice';
+import { FetchSMovieById } from '../../reduxStore/reducers/staticMovies';
 import SMS from './staticMoviesStyle.module.css';
 import { getFavorites } from "@/reduxStore/reducers/favMovies";
 import { Movie } from '@/interfaces/interfaces';
@@ -11,6 +12,7 @@ import Header from '@/components/headerComponent/Header';
 
 function Page() {
   const typedDispatch = useTypedDispatch();
+  const { apiKeyWorks } = useTypedSelector((state) => state.MoviesData);
   const [data, setData] = useState<Movie[]>([]);
 
   // Helper function to fetch and collect movie data
@@ -19,12 +21,22 @@ function Page() {
 
     const results: Movie[] = [];
 
-    for (const id of movieIds) {
-      // Fetch the movie data and unwrap the result
-      const result = await typedDispatch(fetchMovieById(id)).unwrap();
-      results.push(result);
+    if (apiKeyWorks) {
+      for (const id of movieIds) {
+        // Fetch the movie data and unwrap the result
+        const result = await typedDispatch(fetchMovieById(id)).unwrap();
+        results.push(result);
+      }     
+    }else{
+      for (const id of movieIds) {
+        // Dispatch getMovieById to fetch movie from static data
+        const result = await typedDispatch(FetchSMovieById(id)).unwrap();
+        // Use the staticMoviesState from the component level
+        results.push(result);
+      }
     }
 
+    // console.log(results)
     setData(results);
   };
 
@@ -41,7 +53,7 @@ function Page() {
             data?.length > 0 ?(
             data.map((movie) => (
               <li key={movie.id} style={{ width: '22vw', boxSizing: 'border-box', listStyle: 'none' }}>
-                <MovieCard key={movie.id} movie={movie} StaticOrAPI="API" />
+                <MovieCard key={movie.id} movie={movie} StaticOrAPI={apiKeyWorks ? "API" : "static"} />
               </li>    
             ))
             ) : (

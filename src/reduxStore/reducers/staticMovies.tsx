@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import moviesList from './moviesList.json';
+import type { RootState } from '../rStore/store';
 
 // create movie object
 interface Movie {
@@ -25,6 +26,23 @@ const initialState: MovieState = {
     totalPages: 0,
     error: null,
 };
+
+export const FetchSMovieById = createAsyncThunk<
+  Movie,     // returned payload
+  number,    // thunk argument type
+  { state: RootState }
+>(
+  'staticMovies/getMovieById',
+  async (movieId, { rejectWithValue }) => {
+    // flatten all pages from your JSON directly:
+    const flat = moviesList.pages.flatMap((p) => p.movies);
+    const found = flat.find((m) => m.id === movieId);
+    if (!found) {
+      return rejectWithValue(`Movie with ID ${movieId} not found`);
+    }
+    return found;
+  }
+);
 
 const staticMovies = createSlice({
     name: 'staticMovies',
@@ -55,7 +73,23 @@ const staticMovies = createSlice({
 
             state.selectedMovie = foundMovie || null; // Store the found movie, or null if not found
         }
-    }
+    },
+    extraReducers: builder => {
+    builder
+      .addCase(FetchSMovieById.pending, state => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(FetchSMovieById.fulfilled, (state, action: PayloadAction<Movie>) => {
+        state.status = 'idle';
+        state.selectedMovie = action.payload;
+      })
+      .addCase(FetchSMovieById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload as string;
+        state.selectedMovie = null;
+      });
+  },
 });
 
 export const { getMoviesPage, searchForMovie, getMovieById } = staticMovies.actions; // export new action
